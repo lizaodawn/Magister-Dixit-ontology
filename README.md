@@ -1,6 +1,6 @@
 Daniel Oltean, Agni Vourtsi, and Dawn Zhuang, Linked Open Data in manuscript collections: An ontology for Magister Dixit dataset
 
-===============================================================
+=======================================
 
 This project focuses on the Magister Dixit collection, a group of manuscripts containing students’ notes from the Old University of Leuven, available at: https://github.com/KULeuvenDigitalisering/Magister-Dixit-Collection-Dataset. To describe this dataset, we build an ontology based on Erlangen Conceptual Reference Model (ECRM, http://erlangen-crm.org/current-version) and Erlangen Functional Requirements for Bibliographic Records object-oriented (EFRBRoo, http://erlangen-crm.org/efrbroo) models.
 
@@ -17,4 +17,4 @@ We included short descriptions of ontology's main classes and properties via rdf
 
 We also implemented one instance (Magister_Dixit_3 = Abdij van Berne Heeswijk Ms. K1) to illustrate the use of all the classes and properties designed.
 
-===============================================================
+=======================================
