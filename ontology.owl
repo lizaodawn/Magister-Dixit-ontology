@@ -1,0 +1,428 @@
+@prefix : <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix efrbroo: <http://erlangen-crm.org/efrbroo/> .
+@base <http://www.semanticweb.org/MD/> .
+
+<http://www.semanticweb.org/MD/> rdf:type owl:Ontology ;
+                                  rdfs:comment "Ontology based on Erlangen Conceptual Reference Model (ECRM, http://erlangen-crm.org/current-version) and Erlangen Functional Requirements for Bibliographic Records object-oriented (EFRBRoo, http://erlangen-crm.org/efrbroo) ontologies; created by Agni Vourtsi, Dawn Zhuang, and Daniel Oltean in January 2023 to describe Magister Dixit Collection." .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdfs:range rdfs:Literal .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://erlangen-crm.org/current/P102_has_title
+ecrm:P102_has_title rdf:type owl:ObjectProperty ;
+                    rdfs:domain efrbroo:F2_Expression ;
+                    rdfs:range ecrm:E35_Title ;
+                    rdfs:label "ecrm:P102_has_title" .
+
+
+###  http://erlangen-crm.org/current/P128_carries
+ecrm:P128_carries rdf:type owl:ObjectProperty ;
+                  rdfs:comment "This property describes the relationship between an entity and some special elements that it contains. Example: A manuscript contains notes of the scribes." ;
+                  rdfs:label "ecrm:P128_carries" ;
+                  rdfs:seeAlso """carries_illustrations
+carries_scribes_notes""" .
+
+
+###  http://erlangen-crm.org/current/P131_is_identified_by
+ecrm:P131_is_identified_by rdf:type owl:ObjectProperty ;
+                           rdfs:domain <http://www.semanticweb.org/MD/3#Magister_Dixit_Manuscript> ;
+                           rdfs:range ecrm:E42_Identifier ;
+                           rdfs:label "ecrm:P131_is_identified_by" .
+
+
+###  http://erlangen-crm.org/current/P14_carried_out_by
+ecrm:P14_carried_out_by rdf:type owl:ObjectProperty ;
+                        rdfs:domain efrbroo:F28_Expression_Creation ;
+                        rdfs:range ecrm:E39_Actor ;
+                        rdfs:comment "This property describes the active participation of an E39 Actor in an F28 act of creation. Example: The painting of the Sistine Chapel was carried out by Michaelangelo Buonaroti in the role of master craftsman." ;
+                        rdfs:label "ecrm:P14_carried_out_by" .
+
+
+###  http://erlangen-crm.org/current/P43_has_dimension
+ecrm:P43_has_dimension rdf:type owl:ObjectProperty ;
+                       rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                       rdfs:label "ecrm:P43_has_dimension" .
+
+
+###  http://erlangen-crm.org/current/P45_consists_of
+ecrm:P45_consists_of rdf:type owl:ObjectProperty ;
+                     rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                     rdfs:label "ecrm:P45_consists_of" .
+
+
+###  http://erlangen-crm.org/current/P4_has_time-span
+ecrm:P4_has_time-span rdf:type owl:ObjectProperty ;
+                      rdfs:domain efrbroo:F28_Expression_Creation ;
+                      rdfs:range ecrm:E52_Time-Span ;
+                      rdfs:comment "This property describes the temporal confinement of an instance. Example: The Yalta Conference has time-span Yalta Conference time-span."@en ;
+                      rdfs:label "ecrm:P4_has_time-span"@en .
+
+
+###  http://erlangen-crm.org/current/P52_has_current_owner
+ecrm:P52_has_current_owner rdf:type owl:ObjectProperty ;
+                           rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                           rdfs:label "ecrm:P52_has_current_owner" .
+
+
+###  http://erlangen-crm.org/current/P56_bears_feature
+ecrm:P56_bears_feature rdf:type owl:ObjectProperty ;
+                       rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                       rdfs:label "ecrm:P56_bears_feature" .
+
+
+###  http://erlangen-crm.org/current/P72_has_language
+ecrm:P72_has_language rdf:type owl:ObjectProperty ;
+                      rdfs:domain efrbroo:F2_Expression ;
+                      rdfs:label "ecrm:P72_has_language" .
+
+
+###  http://erlangen-crm.org/current/P7_took_place_at
+ecrm:P7_took_place_at rdf:type owl:ObjectProperty ;
+                      rdfs:domain efrbroo:F28_Expression_Creation ;
+                      rdfs:range ecrm:E53_Place ;
+                      rdfs:comment "This property describes the spatial location of an instance. Example: The \"Révolution française\" took place at France."@en ;
+                      rdfs:label "ecrm:P7_took_place_at" .
+
+
+###  http://erlangen-crm.org/efrbroo/R18i_was_created_by
+efrbroo:R18i_was_created_by rdf:type owl:ObjectProperty ;
+                            rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                            rdfs:range efrbroo:F28_Expression_Creation ;
+                            rdfs:comment "This property (the inverse of R18_created) associates a physical object with the act of creation that produced it, the former being an instance of F28 Expression Creation. Example: The manuscript now identified as ‘Massachusetts Cambridge Harvard University Houghton Library bMS Am 1118.5 is the result of Emily Dickinson’s creation of a version of her poem ‘Safe in their alabaster chambers.’"@en ;
+                            rdfs:label "efrbroo:R18i_was_created_by"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/R42_is_representative_manifestation_singleton_for
+efrbroo:R42_is_representative_manifestation_singleton_for rdf:type owl:ObjectProperty ;
+                                                          rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                                                          rdfs:range efrbroo:F2_Expression ;
+                                                          rdfs:comment "This property identifies an instance of F4 Manifestation Singleton that has been declared as the unique representative for an instance of F2 Expression by some bibliographic agency. Example: The manuscript identified by shelfmark ‘MS-8282’ within the collections of the National Library of France, Department for Music is the representative manifestation singleton of the musical text of Stanislas Champein’s opera ‘Vichnou.’"@en ;
+                                                          rdfs:label "efrbroo:R42_is_representative_manifestation_singleton_for"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/R5_has_component
+efrbroo:R5_has_component rdf:type owl:ObjectProperty ;
+                         rdfs:domain efrbroo:F2_Expression ;
+                         rdfs:range efrbroo:F22_Self-Contained_Expression ;
+                         rdfs:comment "This property associates an F2 Expression with its structural components. Example: The Italian text of Dante’s textual work entitled ‘Divina Commedia’ (F2) has component The Italian text of Dante’s textual work entitled ‘Inferno’ (F22)." ;
+                         rdfs:label "efrbroo:R5_has_component" .
+
+
+###  http://www.semanticweb.org/MD/3#carries_illustrations
+<http://www.semanticweb.org/MD/3#carries_illustrations> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf ecrm:P128_carries ;
+                                                        rdfs:domain efrbroo:F2_Expression .
+
+
+###  http://www.semanticweb.org/MD/3#carries_scribes_notes
+<http://www.semanticweb.org/MD/3#carries_scribes_notes> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf ecrm:P128_carries ;
+                                                        rdfs:domain efrbroo:F2_Expression .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://erlangen-crm.org/current/P3_has_note
+ecrm:P3_has_note rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:label "ecrm:P3_has_note" .
+
+
+###  http://erlangen-crm.org/current/P90_has_value
+ecrm:P90_has_value rdf:type owl:DatatypeProperty ;
+                   rdfs:label "ecrm:P90_has_value" .
+
+
+###  http://purl.org/dc/terms/alternative
+dcterms:alternative rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/date
+dcterms:date rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/MD/3#Date_1
+<http://www.semanticweb.org/MD/3#Date_1> rdf:type owl:DatatypeProperty ;
+                                         rdfs:subPropertyOf dcterms:date .
+
+
+###  http://www.semanticweb.org/MD/3#Date_2
+<http://www.semanticweb.org/MD/3#Date_2> rdf:type owl:DatatypeProperty ;
+                                         rdfs:subPropertyOf dcterms:date .
+
+
+###  http://www.semanticweb.org/MD/3#has_binding
+<http://www.semanticweb.org/MD/3#has_binding> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf <http://www.semanticweb.org/MD/3#has_feature> .
+
+
+###  http://www.semanticweb.org/MD/3#has_carrier
+<http://www.semanticweb.org/MD/3#has_carrier> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf <http://www.semanticweb.org/MD/3#has_feature> .
+
+
+###  http://www.semanticweb.org/MD/3#has_content
+<http://www.semanticweb.org/MD/3#has_content> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf <http://www.semanticweb.org/MD/3#has_feature> .
+
+
+###  http://www.semanticweb.org/MD/3#has_feature
+<http://www.semanticweb.org/MD/3#has_feature> rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/MD/3#has_folios
+<http://www.semanticweb.org/MD/3#has_folios> rdf:type owl:DatatypeProperty ;
+                                             rdfs:subPropertyOf <http://www.semanticweb.org/MD/3#has_feature> .
+
+
+###  http://www.semanticweb.org/MD/3#has_genre
+<http://www.semanticweb.org/MD/3#has_genre> rdf:type owl:DatatypeProperty ;
+                                            rdfs:subPropertyOf <http://www.semanticweb.org/MD/3#has_feature> .
+
+
+###  http://www.semanticweb.org/MD/3#has_media
+<http://www.semanticweb.org/MD/3#has_media> rdf:type owl:DatatypeProperty ;
+                                            rdfs:subPropertyOf <http://www.semanticweb.org/MD/3#has_feature> .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://erlangen-crm.org/current/E21_Person
+ecrm:E21_Person rdf:type owl:Class ;
+                rdfs:subClassOf ecrm:E39_Actor ;
+                rdfs:label "ecrm:E21_Person" .
+
+
+###  http://erlangen-crm.org/current/E35_Title
+ecrm:E35_Title rdf:type owl:Class ;
+               rdfs:label "ecrm:E35_Title" .
+
+
+###  http://erlangen-crm.org/current/E39_Actor
+ecrm:E39_Actor rdf:type owl:Class ;
+               rdfs:label "ecrm:E39_Actor" .
+
+
+###  http://erlangen-crm.org/current/E42_Identifier
+ecrm:E42_Identifier rdf:type owl:Class ;
+                    rdfs:label "ecrm:E42_Identifier" .
+
+
+###  http://erlangen-crm.org/current/E52_Time-Span
+ecrm:E52_Time-Span rdf:type owl:Class ;
+                   rdfs:comment "This class comprises abstract temporal extents, in the sense of Galilean physics, having a beginning, an end and a duration. Examples: 1961; from 12-17-1993 to 12-8-1996; 4th July 1945."@en ;
+                   rdfs:label "ecrm:E52_Time-Span"@en .
+
+
+###  http://erlangen-crm.org/current/E53_Place
+ecrm:E53_Place rdf:type owl:Class ;
+               rdfs:comment "This class comprises extents in space in the pure sense of physics: independent from temporal phenomena and matter. Example: The extent of the UK in the year 2003."@en ;
+               rdfs:label "ecrm:E53_Place"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/F22_Self-Contained_Expression
+efrbroo:F22_Self-Contained_Expression rdf:type owl:Class ;
+                                      rdfs:comment "This class comprises the immaterial component parts of an individual work regarded as a complete whole. Example: The Italian text of Dante’s ‘Inferno’ as found in the authoritative critical edition La Commedia secondo l’antica vulgata, Milano: Mondadori, 1966-67" ;
+                                      rdfs:label "efrbroo:F22_Self-Contained_Expression" .
+
+
+###  http://erlangen-crm.org/efrbroo/F28_Expression_Creation
+efrbroo:F28_Expression_Creation rdf:type owl:Class ;
+                                rdfs:comment "This class comprises activities that characterise the externalisation of an act of creation and have an F4 Manifestation Singleton as a result. The spatiotemporal circumstances under which the expression is created are necessarily the same spatiotemporal circumstances under which the first F4 Manifestation Singleton is produced. Examples: The creation of the original manuscript score of ‘Uwertura tragiczna’ by Andrzej Panufnik in 1942 in Warsaw."@en ;
+                                rdfs:label "efrbroo:F28_Expression_Creation"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/F2_Expression
+efrbroo:F2_Expression rdf:type owl:Class ;
+                      rdfs:comment "This class comprises the intellectual or artistic realisations of works in the form of identifiable immaterial objects, such as texts, poems, musical notations, images, multimedia objects, or any combination of such forms. The substance of F2 Expression is signs. Its instances Example: The Italian text of Dante’s ‘Divina Commedia’ as found in the authoritative critical edition ‘La Commedia secondo l’antica vulgata a cura di Giorgio Petrocchi’, Milano: Mondadori, 1966-67."@en ;
+                      rdfs:label "efrbroo:F2_Expression"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/F4_Manifestation_Singleton
+efrbroo:F4_Manifestation_Singleton rdf:type owl:Class ;
+                                   rdfs:comment "This class comprises physical objects produced as unique objects through an F28 Expression Creation. Each of them carries an instance of F2 Expression. Instances of F4 Manifestation Singleton include manuscripts, preparatory sketches, and the final clean draft sent by an author or a composer to a publisher. Example: The manuscript known as ‘The Book of Kells.’"@en ;
+                                   rdfs:label "efrbroo:F4_Manifestation_Singleton"@en .
+
+
+###  http://www.semanticweb.org/MD/3#Contributors
+<http://www.semanticweb.org/MD/3#Contributors> rdf:type owl:Class ;
+                                               rdfs:subClassOf ecrm:E21_Person .
+
+
+###  http://www.semanticweb.org/MD/3#Faculty
+<http://www.semanticweb.org/MD/3#Faculty> rdf:type owl:Class ;
+                                          rdfs:subClassOf ecrm:E53_Place .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_Manuscript
+<http://www.semanticweb.org/MD/3#Magister_Dixit_Manuscript> rdf:type owl:Class ;
+                                                            rdfs:subClassOf efrbroo:F4_Manifestation_Singleton ;
+                                                            rdfs:comment "This class contain the 552 manuscripts related to Magister Dixit project."^^rdfs:Literal ;
+                                                            rdfs:label "Magister_Dixit_Manuscript"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/MD/3#BERNE_HEESWIJK
+<http://www.semanticweb.org/MD/3#BERNE_HEESWIJK> rdf:type owl:NamedIndividual ;
+                                                 rdfs:label "BERNE HEESWIJK" .
+
+
+###  http://www.semanticweb.org/MD/3#Leuven
+<http://www.semanticweb.org/MD/3#Leuven> rdf:type owl:NamedIndividual ;
+                                         dcterms:identifier "https://vocab.getty.edu/tgn/7007949" ;
+                                         rdfs:label "Leuven" .
+
+
+###  http://www.semanticweb.org/MD/3#Logica
+<http://www.semanticweb.org/MD/3#Logica> rdf:type owl:NamedIndividual ,
+                                                  ecrm:E35_Title ;
+                                         dcterms:alternative "Dictata magis principalia in universam Logicam quæ sub Doctissimo Domino D Henrico Werpen STBF. Professore primario inflorentissimo Falconis pædagogio calamosuo excepit f[rater]. Augustinus Ketelers Eccl[esiae] Bernensis Canonicus Anno 1643" ;
+                                         rdfs:label "Logica" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3> rdf:type owl:NamedIndividual ,
+                                                            <http://www.semanticweb.org/MD/3#Magister_Dixit_Manuscript> ;
+                                                   ecrm:P131_is_identified_by <http://www.semanticweb.org/MD/3#Magister_Dixit_3_identifier> ;
+                                                   ecrm:P43_has_dimension <http://www.semanticweb.org/MD/3#Magister_Dixit_3_dimension> ;
+                                                   ecrm:P45_consists_of <http://www.semanticweb.org/MD/3#paper> ;
+                                                   ecrm:P52_has_current_owner <http://www.semanticweb.org/MD/3#BERNE_HEESWIJK> ;
+                                                   ecrm:P56_bears_feature <http://www.semanticweb.org/MD/3#Magister_Dixit_3_physical_feature> ;
+                                                   efrbroo:R18i_was_created_by <http://www.semanticweb.org/MD/3#Magister_Dixit_3_creation> ;
+                                                   efrbroo:R42_is_representative_manifestation_singleton_for <http://www.semanticweb.org/MD/3#Magister_Dixit_3_content> ;
+                                                   dcterms:identifier "http://resolver.libis.be/IE5062854/representation" ;
+                                                   skos:prefLabel "Abdij van Berne Heeswijk Ms. K1" ;
+                                                   rdfs:label "Magister_Dixit_3" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_Illustrations
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_Illustrations> rdf:type owl:NamedIndividual ;
+                                                                 ecrm:P3_has_note "f. 1/3r :$bengraved titlepage $cMetaphysica, Physica, with signs of the Lily, the Falcon, the Castle and the Pig ::: f. 1/30v : pasted on$bengraving(s) $cportrait of a lady ::: f. 1/121v : pasted on$bengraving(s) $cportrait of a veiled lady with book ::: f. 1/128r : pasted on$bengraving(s) $cMusica ::: f. 2/1r :$bengraved titlepage $cMetaphysica, Physica, with signs of the Lily, the Falcon, the Castle and the Pig ::: f. 2/1r : page with$bornamental initials" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_Scribes_notes
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_Scribes_notes> rdf:type owl:NamedIndividual ;
+                                                                 ecrm:P3_has_note "Title created by cataloguer ::: 3 colophons ::: Colophon on f. 1/50r reads : Finis ::: Colophon on f. 1/157r reads : Finis coronato nobilitatur opus ::: Colophon on f. 2/142v reads : Finis ::: Chronogram on f. 1/157r reads : fIneM hVIVs LIbrI IVnII LVX nona VIDeba. [= 1643]" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_chapters
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_chapters> rdf:type owl:NamedIndividual ,
+                                                                     efrbroo:F22_Self-Contained_Expression ;
+                                                            ecrm:P3_has_note "Dictata magis principalia in universam logicam $gf. 3r-157r ::: * [...] $gf. 5r-5v ::: * Tractatus de definitione et divisione $gf. 6r-10r ::: * Praefatio In Isafogen Porphirij $gf. 10r-43v ::: * Tractatus de distinctionibus $gf. 44r-50r ::: * Praefatio in libros praedicamentorum Aristotelis $gf. 50v-109r ::: * [Libri priorum analiticorum] $gf. 109r-157r ::: ** Liber primus primus priorum annaliticorum de obiecto horum librorum $gf. 109r-136r ::: ** Liber secundus priorum analiticorum $gf. 136r-157r ::: Dictata minus principalia in Logicam quae sub eruditissimo Domino D Francisco Van Viaene STLicentiato Philosophiæ Professore in celeberrimo coronati Falconis collegio scripsit F[rater]. Augustinus Ketelers msig. Eccl[esiae] Bern[ensis] Can[onicus] A°1643 $gf. 1r-142v ::: * Praefatio in Prodidagmata $gf. 1r-33v ::: * Praefatio in Libros perihermanias $gf. 34r-76r ::: ** Libri primi $gf. 37v-71r ::: ** Liber secundus perihermenias $gf. 71v-76r ::: * [Libri topicorum] ::: ** Liber primus topicorum $gf. 76r-94r ::: ** Liber secundum topicorum $gf. 94r-142v ::: Philosophia : logica, physica, metaphysia... / Praeside D. ac M. Evstachio de Froidmont [...]. Anno 1643. ... [Lovanii], typis Bernard. Masij [printed text] $gf. 145r" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_content
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_content> rdf:type owl:NamedIndividual ,
+                                                                    efrbroo:F2_Expression ;
+                                                           ecrm:P102_has_title <http://www.semanticweb.org/MD/3#Logica> ;
+                                                           ecrm:P72_has_language <http://www.semanticweb.org/MD/3#lat> ;
+                                                           efrbroo:R5_has_component <http://www.semanticweb.org/MD/3#Magister_Dixit_3_chapters> ;
+                                                           <http://www.semanticweb.org/MD/3#carries_illustrations> <http://www.semanticweb.org/MD/3#Magister_Dixit_3_Illustrations> ;
+                                                           <http://www.semanticweb.org/MD/3#carries_scribes_notes> <http://www.semanticweb.org/MD/3#Magister_Dixit_3_Scribes_notes> .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_contributors
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_contributors> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.semanticweb.org/MD/3#Contributors> ;
+                                                                ecrm:P3_has_note "Werpin, Henricus ::: Van Vianen, Franciscus ::: Ketelers, Augustinus" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_country
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_country> rdf:type owl:NamedIndividual ;
+                                                           rdfs:label "xx" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_creation
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_creation> rdf:type owl:NamedIndividual ,
+                                                                     efrbroo:F28_Expression_Creation ;
+                                                            ecrm:P14_carried_out_by <http://www.semanticweb.org/MD/3#Magister_Dixit_3_contributors> ;
+                                                            ecrm:P4_has_time-span <http://www.semanticweb.org/MD/3#Magister_Dixit_3_time> ;
+                                                            ecrm:P7_took_place_at <http://www.semanticweb.org/MD/3#Leuven> ,
+                                                                                  <http://www.semanticweb.org/MD/3#Magister_Dixit_3_country> ,
+                                                                                  <http://www.semanticweb.org/MD/3#Faculty_of_Arts,_Paedagogium_Falconis> .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_dimension
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_dimension> rdf:type owl:NamedIndividual ;
+                                                             ecrm:P90_has_value "\\\\\\\\" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_identifier
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_identifier> rdf:type owl:NamedIndividual ,
+                                                                       ecrm:E42_Identifier ;
+                                                              dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9984817940101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                                              rdfs:isDefinedBy 9984817940101488 .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_physical_feature
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_physical_feature> rdf:type owl:NamedIndividual ;
+                                                                    <http://www.semanticweb.org/MD/3#has_binding> "Brown calf leather binding ; blind stamped boards and spine with title \"Logica\" ;  stamp on front and back  board with sign of the Falcon and with the words \"Volitat svper omnia Falco\" ; renmants of leather ties and tieholes" ;
+                                                                    <http://www.semanticweb.org/MD/3#has_carrier> "volume" ;
+                                                                    <http://www.semanticweb.org/MD/3#has_content> "text" ;
+                                                                    <http://www.semanticweb.org/MD/3#has_folios> "161, 145" ;
+                                                                    <http://www.semanticweb.org/MD/3#has_genre> "Manuscripts ::: Lecture notes" ;
+                                                                    <http://www.semanticweb.org/MD/3#has_media> "unmediated" .
+
+
+###  http://www.semanticweb.org/MD/3#Magister_Dixit_3_time
+<http://www.semanticweb.org/MD/3#Magister_Dixit_3_time> rdf:type owl:NamedIndividual ,
+                                                                 ecrm:E52_Time-Span ;
+                                                        ecrm:P3_has_note "s" ;
+                                                        <http://www.semanticweb.org/MD/3#Date_1> 1643 ;
+                                                        <http://www.semanticweb.org/MD/3#Date_2> "\\\\\\\\" .
+
+
+###  http://www.semanticweb.org/MD/3#lat
+<http://www.semanticweb.org/MD/3#lat> rdf:type owl:NamedIndividual ;
+                                      rdfs:label "lat" .
+
+
+###  http://www.semanticweb.org/MD/3#paper
+<http://www.semanticweb.org/MD/3#paper> rdf:type owl:NamedIndividual ;
+                                        rdfs:label "paper" .
+
+
+###  http://www.semanticweb.org/MD/3#Faculty_of_Arts,_Paedagogium_Falconis
+<http://www.semanticweb.org/MD/3#Faculty_of_Arts,_Paedagogium_Falconis> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/MD/3#Faculty> ;
+                                                                        dcterms:identifier "https://vocab.getty.edu/tgn/7007949" ;
+                                                                        rdfs:label "Faculty of Arts, Paedagogium Falconis" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
