@@ -1,0 +1,88 @@
+1. Find all manuscripts produced by "Paedagogium Lilii" with their main titles, ordered by manuscript label.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX efrbroo: <http://erlangen-crm.org/efrbroo/>
+PREFIX ecrm: <http://erlangen-crm.org/current/>
+PREFIX  dcterms: <http://purl.org/dc/terms/>
+PREFIX odis: <http://www.odis.be/lnk/>
+PREFIX madsrdf: <http://www.loc.gov/mads/rdf/v1#>
+PREFIX base: <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#>
+
+
+
+SELECT ?label_manuscript ?link ?label_title ?label_faculty 
+WHERE 
+{
+  ?manuscript rdf:type base:Magister_Dixit_Manuscript;
+                          rdfs:label ?label_manuscript;
+                          dcterms:identifier ?link;
+                          efrbroo:R42_is_representative_manifestation_singleton_for/ecrm:P102_has_title ?title;
+                          efrbroo:R18i_was_created_by/ecrm:P14_carried_out_by ?faculty.
+  ?title rdfs:label ?label_title.
+  ?faculty rdf:type base:Faculty;
+                 rdfs:label ?label_faculty;
+FILTER (?label_faculty = "Faculty of Arts, Paedagogium Lilii")
+}
+
+ORDER BY ?label_manuscript
+
+
+2. Count the contributing students of the manuscripts by their birthplaces.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX efrbroo: <http://erlangen-crm.org/efrbroo/>
+PREFIX ecrm: <http://erlangen-crm.org/current/>
+PREFIX  dcterms: <http://purl.org/dc/terms/>
+PREFIX odis: <http://www.odis.be/lnk/>
+PREFIX madsrdf: <http://www.loc.gov/mads/rdf/v1#>
+PREFIX base: <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#>
+
+
+SELECT ?label_birthplace (count (?student) as ?count)
+WHERE
+{
+?student rdf:type base:Student;
+                 madsrdf:birthPlace ?birthplace.
+?birthplace rdfs:label ?label_birthplace.
+}
+
+GROUP BY ?label_birthplace
+ORDER BY desc(?count)  ?label_birthplace
+
+
+3.Find all contributing professors of the manuscripts collected in KBR with the manuscript titles.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX efrbroo: <http://erlangen-crm.org/efrbroo/>
+PREFIX ecrm: <http://erlangen-crm.org/current/>
+PREFIX  dcterms: <http://purl.org/dc/terms/>
+PREFIX odis: <http://www.odis.be/lnk/>
+PREFIX madsrdf: <http://www.loc.gov/mads/rdf/v1#>
+PREFIX base: <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#>
+
+
+SELECT ?label_professor ?label_title ?label_library
+WHERE 
+{
+?manuscript rdf:type base:Magister_Dixit_Manuscript;
+                        efrbroo:R42_is_representative_manifestation_singleton_for/ecrm:P102_has_title ?title;
+                        ecrm:P52_has_current_owner ?library;
+                        efrbroo:R18i_was_created_by/ecrm:P14_carried_out_by ?professor.
+?title rdfs:label ?label_title.
+?library rdf:type ecrm:E78_Collection;
+              rdfs:label ?label_library.
+?professor rdf:type base:Professor;
+                    rdfs:label ?label_professor
+FILTER (?label_library = "KBR")
+}
+
+ORDER BY ?label_title

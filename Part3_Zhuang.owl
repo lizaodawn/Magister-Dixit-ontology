@@ -1,0 +1,1672 @@
+@prefix : <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix gvp: <http://vocab.getty.edu/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tgn: <https://vocab.getty.edu/tgn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base: <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#> .
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix odis: <http://www.odis.be/lnk/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix efrbroo: <http://erlangen-crm.org/efrbroo/> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@base <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_Part3> .
+
+<http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_Part3> rdf:type owl:Ontology ;
+                                                          rdfs:comment "Ontology based on Erlangen Conceptual Reference Model (ECRM, http://erlangen-crm.org/current-version) and Erlangen Functional Requirements for Bibliographic Records object-oriented (EFRBRoo, http://erlangen-crm.org/efrbroo) ontologies; created by Agni Vourtsi, Dawn Zhuang, and Daniel Oltean in January 2023 to describe Magister Dixit Collection." .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdfs:range rdfs:Literal .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://erlangen-crm.org/current/P102_has_title
+ecrm:P102_has_title rdf:type owl:ObjectProperty ;
+                    rdfs:domain efrbroo:F2_Expression ;
+                    rdfs:range ecrm:E35_Title ;
+                    rdfs:comment "This property describes the E35 Title applied to an instance of F2_Expression." ;
+                    rdfs:label "ecrm:P102_has_title" .
+
+
+###  http://erlangen-crm.org/current/P128_carries
+ecrm:P128_carries rdf:type owl:ObjectProperty ;
+                  rdfs:comment "This property describes the relationship between an entity and some special elements that it contains. Example: A manuscript contains notes of the scribes." ;
+                  rdfs:label "ecrm:P128_carries" ;
+                  rdfs:seeAlso """carries_illustrations
+carries_scribes_notes""" .
+
+
+###  http://erlangen-crm.org/current/P131_is_identified_by
+ecrm:P131_is_identified_by rdf:type owl:ObjectProperty ;
+                           rdfs:domain base:Magister_Dixit_Manuscript ;
+                           rdfs:range ecrm:E42_Identifier ;
+                           rdfs:comment "This property identifies a name used specifically to identify an E39 Actor." ;
+                           rdfs:label "ecrm:P131_is_identified_by" .
+
+
+###  http://erlangen-crm.org/current/P14_carried_out_by
+ecrm:P14_carried_out_by rdf:type owl:ObjectProperty ;
+                        rdfs:domain efrbroo:F28_Expression_Creation ;
+                        rdfs:range ecrm:E39_Actor ;
+                        rdfs:comment "This property describes the active participation of an E39 Actor in an F28 act of creation. Example: The painting of the Sistine Chapel was carried out by Michaelangelo Buonaroti in the role of master craftsman." ;
+                        rdfs:label "ecrm:P14_carried_out_by" .
+
+
+###  http://erlangen-crm.org/current/P43_has_dimension
+ecrm:P43_has_dimension rdf:type owl:ObjectProperty ;
+                       rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                       rdfs:range ecrm:E54_Dimension ;
+                       rdfs:comment "This property records a E54 Dimension of some owl:Thing." ;
+                       rdfs:label "ecrm:P43_has_dimension" .
+
+
+###  http://erlangen-crm.org/current/P45_consists_of
+ecrm:P45_consists_of rdf:type owl:ObjectProperty ;
+                     rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                     rdfs:range ecrm:E57_Material ;
+                     rdfs:comment "This property identifies the instances of E57 Materials of  a physical thing is composed." ;
+                     rdfs:label "ecrm:P45_consists_of" .
+
+
+###  http://erlangen-crm.org/current/P4_has_time-span
+ecrm:P4_has_time-span rdf:type owl:ObjectProperty ;
+                      rdfs:domain efrbroo:F28_Expression_Creation ;
+                      rdfs:range ecrm:E52_Time-Span ;
+                      rdfs:comment "This property describes the temporal confinement of an instance. Example: The Yalta Conference has time-span Yalta Conference time-span."@en ;
+                      rdfs:label "ecrm:P4_has_time-span"@en .
+
+
+###  http://erlangen-crm.org/current/P52_has_current_owner
+ecrm:P52_has_current_owner rdf:type owl:ObjectProperty ;
+                           rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                           rdfs:range ecrm:E78_Collection ;
+                           rdfs:comment "This property identifies the owner of a physical thing." ;
+                           rdfs:label "ecrm:P52_has_current_owner" .
+
+
+###  http://erlangen-crm.org/current/P56_bears_feature
+ecrm:P56_bears_feature rdf:type owl:ObjectProperty ;
+                       rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                       rdfs:range ecrm:E26_Physical_Feature ;
+                       rdfs:comment "This property describes a E26 Physical Feature found on a physical object." ;
+                       rdfs:label "ecrm:P56_bears_feature" .
+
+
+###  http://erlangen-crm.org/current/P72_has_language
+ecrm:P72_has_language rdf:type owl:ObjectProperty ;
+                      rdfs:domain efrbroo:F2_Expression ;
+                      rdfs:range ecrm:E56_Language ;
+                      rdfs:comment "This property describes the E56 Language of a linguistic object." ;
+                      rdfs:label "ecrm:P72_has_language" .
+
+
+###  http://erlangen-crm.org/current/P7_took_place_at
+ecrm:P7_took_place_at rdf:type owl:ObjectProperty ;
+                      rdfs:domain efrbroo:F28_Expression_Creation ;
+                      rdfs:range ecrm:E53_Place ;
+                      rdfs:comment "This property describes the spatial location of an instance. Example: The \"Révolution française\" took place at France."@en ;
+                      rdfs:label "ecrm:P7_took_place_at" .
+
+
+###  http://erlangen-crm.org/efrbroo/R18i_was_created_by
+efrbroo:R18i_was_created_by rdf:type owl:ObjectProperty ;
+                            rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                            rdfs:range efrbroo:F28_Expression_Creation ;
+                            rdfs:comment "This property (the inverse of R18_created) associates a physical object with the act of creation that produced it, the former being an instance of F28 Expression Creation. Example: The manuscript now identified as ‘Massachusetts Cambridge Harvard University Houghton Library bMS Am 1118.5 is the result of Emily Dickinson’s creation of a version of her poem ‘Safe in their alabaster chambers.’"@en ;
+                            rdfs:label "efrbroo:R18i_was_created_by"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/R42_is_representative_manifestation_singleton_for
+efrbroo:R42_is_representative_manifestation_singleton_for rdf:type owl:ObjectProperty ;
+                                                          rdfs:domain efrbroo:F4_Manifestation_Singleton ;
+                                                          rdfs:range efrbroo:F2_Expression ;
+                                                          rdfs:comment "This property identifies an instance of F4 Manifestation Singleton that has been declared as the unique representative for an instance of F2 Expression by some bibliographic agency. Example: The manuscript identified by shelfmark ‘MS-8282’ within the collections of the National Library of France, Department for Music is the representative manifestation singleton of the musical text of Stanislas Champein’s opera ‘Vichnou.’"@en ;
+                                                          rdfs:label "efrbroo:R42_is_representative_manifestation_singleton_for"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/R5_has_component
+efrbroo:R5_has_component rdf:type owl:ObjectProperty ;
+                         rdfs:domain efrbroo:F2_Expression ;
+                         rdfs:range efrbroo:F22_Self-Contained_Expression ;
+                         rdfs:comment "This property associates an F2 Expression with its structural components. Example: The Italian text of Dante’s textual work entitled ‘Divina Commedia’ (F2) has component The Italian text of Dante’s textual work entitled ‘Inferno’ (F22)." ;
+                         rdfs:label "efrbroo:R5_has_component" .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:ObjectProperty ;
+                   rdfs:domain efrbroo:F2_Expression ;
+                   rdfs:range efrbroo:F2_Expression ;
+                   rdfs:comment "This object property describes a related resource that is a version, edition, or adaptation of the described resource." ;
+                   rdfs:label "dcterms:hasVersion" .
+
+
+###  http://vocab.getty.edu/ontology#aat2332_affiliated_with
+gvp:aat2332_affiliated_with rdf:type owl:ObjectProperty ;
+                            rdfs:domain ecrm:E21_Person ;
+                            rdfs:range base:Faculty ;
+                            rdfs:comment "This object property describes the actor affiliating with an organisation." ;
+                            rdfs:label "gvp:aat2332_affiliated_with" .
+
+
+###  http://www.loc.gov/mads/rdf/v1#birthPlace
+madsrdf:birthPlace rdf:type owl:ObjectProperty ;
+                   rdfs:domain ecrm:E21_Person ;
+                   rdfs:range ecrm:E53_Place ;
+                   rdfs:comment "This object property describes the place of birth of a person." ;
+                   rdfs:label "madsrdf:birthPlace" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#carries_illustrations
+base:carries_illustrations rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf ecrm:P128_carries ;
+                           rdfs:domain efrbroo:F2_Expression ;
+                           rdfs:range ecrm:E38_Image .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#carries_scribes_notes
+base:carries_scribes_notes rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf ecrm:P128_carries ;
+                           rdfs:domain efrbroo:F2_Expression ;
+                           rdfs:range base:Scribes_notes .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://erlangen-crm.org/current/P3_has_note
+ecrm:P3_has_note rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:label "ecr:P3_has_note" .
+
+
+###  http://erlangen-crm.org/current/P90_has_value
+ecrm:P90_has_value rdf:type owl:DatatypeProperty ;
+                   rdfs:label "ecr:P90_has_value" .
+
+
+###  http://purl.org/dc/terms/alternative
+dcterms:alternative rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/date
+dcterms:date rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:DatatypeProperty ;
+                   rdfs:comment "dcterms:identifier" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Date_1
+base:Date_1 rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf dcterms:date .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Date_2
+base:Date_2 rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf dcterms:date .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#has_binding
+base:has_binding rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf base:has_feature .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#has_carrier
+base:has_carrier rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf base:has_feature .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#has_content
+base:has_content rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf base:has_feature .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#has_feature
+base:has_feature rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#has_folios
+base:has_folios rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf base:has_feature .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#has_genre
+base:has_genre rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf base:has_feature .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#has_media
+base:has_media rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf base:has_feature .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://erlangen-crm.org/current/E21_Person
+ecrm:E21_Person rdf:type owl:Class ;
+                rdfs:subClassOf ecrm:E39_Actor ;
+                rdfs:comment "This class comprises real persons who live or are assumed to have lived." ;
+                rdfs:label "ecrm:E21_Person" .
+
+
+###  http://erlangen-crm.org/current/E26_Physical_Feature
+ecrm:E26_Physical_Feature rdf:type owl:Class ;
+                          rdfs:comment "This class comprises identifiable features that are physically attached in an integral way to particular physical objects." ;
+                          rdfs:label "ecrm:E26_Physical_Feature" .
+
+
+###  http://erlangen-crm.org/current/E35_Title
+ecrm:E35_Title rdf:type owl:Class ;
+               rdfs:comment "This class comprises the names assigned to works, such as texts, artworks or pieces of music." ;
+               rdfs:label "ecrm:E35_Title" .
+
+
+###  http://erlangen-crm.org/current/E38_Image
+ecrm:E38_Image rdf:type owl:Class ;
+               rdfs:comment "This class comprises distributions of form, tone and colour that may be found on surfaces such as photos, paintings, prints and sculptures or directly on electronic media." ;
+               rdfs:label "ecrm:E38_Image" .
+
+
+###  http://erlangen-crm.org/current/E39_Actor
+ecrm:E39_Actor rdf:type owl:Class ;
+               rdfs:comment "This class comprises people, either individually or in groups, who have the potential to perform intentional actions for which they can be held responsible." ;
+               rdfs:label "ecrm:E39_Actor" .
+
+
+###  http://erlangen-crm.org/current/E42_Identifier
+ecrm:E42_Identifier rdf:type owl:Class ;
+                    rdfs:comment "This class refers to an unambiguous reference to the resource within a given context, e.g. ISBN, DOI, URN, HTTP URIs." ;
+                    rdfs:label "ecrm:E42_Identifier" .
+
+
+###  http://erlangen-crm.org/current/E52_Time-Span
+ecrm:E52_Time-Span rdf:type owl:Class ;
+                   rdfs:comment "This class comprises abstract temporal extents, in the sense of Galilean physics, having a beginning, an end and a duration. Examples: 1961; from 12-17-1993 to 12-8-1996; 4th July 1945."@en ;
+                   rdfs:label "ecrm:E52_Time-Span"@en .
+
+
+###  http://erlangen-crm.org/current/E53_Place
+ecrm:E53_Place rdf:type owl:Class ;
+               rdfs:comment "This class comprises extents in space in the pure sense of physics: independent from temporal phenomena and matter. Example: The extent of the UK in the year 2003."@en ;
+               rdfs:label "ecrm:E53_Place"@en .
+
+
+###  http://erlangen-crm.org/current/E54_Dimension
+ecrm:E54_Dimension rdf:type owl:Class ;
+                   rdfs:comment "This class comprises quantifiable properties that can be measured by some calibrated means and can be approximated by values." ;
+                   rdfs:label "ecrm:E54_Dimension" .
+
+
+###  http://erlangen-crm.org/current/E56_Language
+ecrm:E56_Language rdf:type owl:Class ;
+                  rdfs:comment "This class comprises the natural languages in the sense of concepts." ;
+                  rdfs:label "ecrm:E56_Language" .
+
+
+###  http://erlangen-crm.org/current/E57_Material
+ecrm:E57_Material rdf:type owl:Class ;
+                  rdfs:comment "This class comprises the concepts of materials." ;
+                  rdfs:label "ecrm:E57_Material" .
+
+
+###  http://erlangen-crm.org/current/E78_Collection
+ecrm:E78_Collection rdf:type owl:Class ;
+                    rdfs:subClassOf ecrm:E39_Actor ;
+                    rdfs:comment "This class comprises physical thing that are assembled and maintained (\"curated\" and \"preserved,\" in museological terminology) by one or more people or groups over time for a specific purpose and audience, and according to a particular collection development plan." ;
+                    rdfs:label "ecrm:E78_Collection" .
+
+
+###  http://erlangen-crm.org/efrbroo/F22_Self-Contained_Expression
+efrbroo:F22_Self-Contained_Expression rdf:type owl:Class ;
+                                      rdfs:comment "This class comprises the immaterial component parts of an individual work regarded as a complete whole. Example: The Italian text of Dante’s ‘Inferno’ as found in the authoritative critical edition La Commedia secondo l’antica vulgata, Milano: Mondadori, 1966-67" ;
+                                      rdfs:label "efrbroo:F22_Self-Contained_Expression" .
+
+
+###  http://erlangen-crm.org/efrbroo/F28_Expression_Creation
+efrbroo:F28_Expression_Creation rdf:type owl:Class ;
+                                rdfs:comment "This class comprises activities that characterise the externalisation of an act of creation and have an F4 Manifestation Singleton as a result. The spatiotemporal circumstances under which the expression is created are necessarily the same spatiotemporal circumstances under which the first F4 Manifestation Singleton is produced. Examples: The creation of the original manuscript score of ‘Uwertura tragiczna’ by Andrzej Panufnik in 1942 in Warsaw."@en ;
+                                rdfs:label "efrbroo:F28_Expression_Creation"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/F2_Expression
+efrbroo:F2_Expression rdf:type owl:Class ;
+                      rdfs:comment "This class comprises the intellectual or artistic realisations of works in the form of identifiable immaterial objects, such as texts, poems, musical notations, images, multimedia objects, or any combination of such forms. The substance of F2 Expression is signs. Its instances Example: The Italian text of Dante’s ‘Divina Commedia’ as found in the authoritative critical edition ‘La Commedia secondo l’antica vulgata a cura di Giorgio Petrocchi’, Milano: Mondadori, 1966-67."@en ;
+                      rdfs:label "efrbroo:F2_Expression"@en .
+
+
+###  http://erlangen-crm.org/efrbroo/F4_Manifestation_Singleton
+efrbroo:F4_Manifestation_Singleton rdf:type owl:Class ;
+                                   rdfs:comment "This class comprises physical objects produced as unique objects through an F28 Expression Creation. Each of them carries an instance of F2 Expression. Instances of F4 Manifestation Singleton include manuscripts, preparatory sketches, and the final clean draft sent by an author or a composer to a publisher. Example: The manuscript known as ‘The Book of Kells.’"@en ;
+                                   rdfs:label "efrbroo:F4_Manifestation_Singleton"@en .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Adapter
+base:Adapter rdf:type owl:Class ;
+             rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Artist
+base:Artist rdf:type owl:Class ;
+            rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Author
+base:Author rdf:type owl:Class ;
+            rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#City
+base:City rdf:type owl:Class ;
+          rdfs:subClassOf ecrm:E53_Place ;
+          rdfs:comment "This class comprises geographical cities." .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Contributors
+base:Contributors rdf:type owl:Class ;
+                  rdfs:subClassOf ecrm:E21_Person .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Country
+base:Country rdf:type owl:Class ;
+             rdfs:subClassOf ecrm:E53_Place ;
+             rdfs:comment "This class comprises geographical countries." .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Engraver
+base:Engraver rdf:type owl:Class ;
+              rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Etcher
+base:Etcher rdf:type owl:Class ;
+            rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Faculty
+base:Faculty rdf:type owl:Class ;
+             rdfs:subClassOf ecrm:E39_Actor ;
+             rdfs:comment "This class refers to a group of people recognised by an organasatiion." .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Illustrator
+base:Illustrator rdf:type owl:Class ;
+                 rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_Manuscript
+base:Magister_Dixit_Manuscript rdf:type owl:Class ;
+                               rdfs:subClassOf efrbroo:F4_Manifestation_Singleton ;
+                               rdfs:comment "This class contain the 552 manuscripts related to Magister Dixit project."^^rdfs:Literal ;
+                               rdfs:label "Magister_Dixit_Manuscript"@en .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Printer
+base:Printer rdf:type owl:Class ;
+             rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Professor
+base:Professor rdf:type owl:Class ;
+               rdfs:subClassOf base:Contributors .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Scribes_notes
+base:Scribes_notes rdf:type owl:Class ;
+                   rdfs:comment "This class comprises notes about an object." ;
+                   rdfs:label "Scribes_notes" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Student
+base:Student rdf:type owl:Class ;
+             rdfs:subClassOf base:Contributors .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.odis.be/lnk/OR_35503
+odis:OR_35503 rdf:type owl:NamedIndividual ,
+                       base:Faculty ;
+              rdfs:label "Faculty of Arts, Paedagogium Castri" .
+
+
+###  http://www.odis.be/lnk/OR_35504
+odis:OR_35504 rdf:type owl:NamedIndividual ,
+                       base:Faculty ;
+              rdfs:label "Faculty of Arts, Paedagogium Porci" .
+
+
+###  http://www.odis.be/lnk/OR_35505
+odis:OR_35505 rdf:type owl:NamedIndividual ,
+                       base:Faculty ;
+              rdfs:label "Faculty of Arts, Paedagogium Lilii" .
+
+
+###  http://www.odis.be/lnk/OR_35506
+odis:OR_35506 rdf:type owl:NamedIndividual ,
+                       base:Faculty ;
+              rdfs:label "Faculty of Arts, Paedagogium Falconis" .
+
+
+###  http://www.odis.be/lnk/OR_35513
+odis:OR_35513 rdf:type owl:NamedIndividual ,
+                       base:Faculty ;
+              rdfs:label "Collegium Sanctissimae Trinitatis" .
+
+
+###  http://www.odis.be/lnk/PS_105992
+odis:PS_105992 rdf:type owl:NamedIndividual ,
+                        base:Professor ;
+               gvp:aat2332_affiliated_with odis:OR_35503 ;
+               rdfs:comment "Primary professor" ;
+               rdfs:label "Thibaut, Sebastianus" .
+
+
+###  http://www.odis.be/lnk/PS_105993
+odis:PS_105993 rdf:type owl:NamedIndividual ,
+                        base:Professor ;
+               gvp:aat2332_affiliated_with odis:OR_35503 ;
+               rdfs:comment "Secondary professor" ;
+               rdfs:label "Flemalle, Ludovicus" .
+
+
+###  http://www.odis.be/lnk/PS_105994
+odis:PS_105994 rdf:type owl:NamedIndividual ,
+                        base:Student ;
+               gvp:aat2332_affiliated_with odis:OR_35503 ;
+               madsrdf:birthPlace wd:Q2766547 ;
+               rdfs:label "Verdonck, Martinus" .
+
+
+###  http://www.odis.be/lnk/PS_106004
+odis:PS_106004 rdf:type owl:NamedIndividual ,
+                        base:Student ;
+               gvp:aat2332_affiliated_with odis:OR_35504 ;
+               madsrdf:birthPlace wd:Q9839 ;
+               rdfs:label "van Geest, Joannes" .
+
+
+###  http://www.odis.be/lnk/PS_106008
+odis:PS_106008 rdf:type owl:NamedIndividual ,
+                        base:Professor ;
+               gvp:aat2332_affiliated_with odis:OR_35504 ;
+               rdfs:comment "Primary professor" ;
+               rdfs:label "Eyben, Arnoldus" .
+
+
+###  http://www.odis.be/lnk/PS_106010
+odis:PS_106010 rdf:type owl:NamedIndividual ,
+                        base:Professor ;
+               gvp:aat2332_affiliated_with odis:OR_35504 ;
+               rdfs:comment "Secondary professor" ;
+               rdfs:label "de Neve, Adrianus" .
+
+
+###  http://www.odis.be/lnk/PS_106011
+odis:PS_106011 rdf:type owl:NamedIndividual ,
+                        base:Professor ;
+               gvp:aat2332_affiliated_with odis:OR_35504 ;
+               rdfs:comment "Regent" ;
+               rdfs:label "Sarens, Guilielmus" .
+
+
+###  http://www.odis.be/lnk/PS_106012
+odis:PS_106012 rdf:type owl:NamedIndividual ,
+                        base:Professor ;
+               gvp:aat2332_affiliated_with odis:OR_35504 ;
+               rdfs:comment "Subregent"^^rdfs:Literal ;
+               rdfs:label "Stoffels, Adamus" .
+
+
+###  http://www.odis.be/lnk/PS_106013
+odis:PS_106013 rdf:type owl:NamedIndividual ,
+                        base:Student ;
+               gvp:aat2332_affiliated_with odis:OR_35504 ;
+               madsrdf:birthPlace wd:Q1296 ;
+               rdfs:label "de Fode, Jacobus" .
+
+
+###  http://www.odis.be/lnk/PS_12258
+odis:PS_12258 rdf:type owl:NamedIndividual ,
+                       base:Student ;
+              madsrdf:birthPlace wd:Q12892 ;
+              rdfs:label "de Meulder, Franciscus" .
+
+
+###  http://www.odis.be/lnk/PS_27008
+odis:PS_27008 rdf:type owl:NamedIndividual ,
+                       base:Professor ;
+              rdfs:comment "Priest" ,
+                           "Primary professor" ;
+              rdfs:label "Zaman, Joannes Franciscus" .
+
+
+###  http://www.odis.be/lnk/PS_29677
+odis:PS_29677 rdf:type owl:NamedIndividual ,
+                       base:Professor ;
+              rdfs:comment "Priest" ,
+                           "Secondary professor" ;
+              rdfs:label "Verheyden, Engelbertus" .
+
+
+###  http://www.odis.be/lnk/PS_87910
+odis:PS_87910 rdf:type owl:NamedIndividual ,
+                       base:Student ;
+              gvp:aat2332_affiliated_with odis:OR_35505 ;
+              madsrdf:birthPlace wd:Q2116328 ;
+              rdfs:label "Souppart, Joannes Bernardus" .
+
+
+###  http://www.odis.be/lnk/PS_87911
+odis:PS_87911 rdf:type owl:NamedIndividual ,
+                       base:Professor ;
+              gvp:aat2332_affiliated_with odis:OR_35505 ;
+              rdfs:comment "Primary professor" ;
+              rdfs:label "Cornet, Hubertus" .
+
+
+###  http://www.odis.be/lnk/PS_88151
+odis:PS_88151 rdf:type owl:NamedIndividual ,
+                       base:Student ;
+              gvp:aat2332_affiliated_with odis:OR_35505 ;
+              madsrdf:birthPlace wd:Q26793 ;
+              rdfs:label "Gonzalez, Franciscus" .
+
+
+###  http://www.odis.be/lnk/PS_88551
+odis:PS_88551 rdf:type owl:NamedIndividual ,
+                       base:Student ;
+              gvp:aat2332_affiliated_with odis:OR_35505 ;
+              madsrdf:birthPlace wd:Q58780 ;
+              rdfs:label "Cox, Balthasar"^^rdfs:Literal .
+
+
+###  http://www.odis.be/lnk/PS_88552
+odis:PS_88552 rdf:type owl:NamedIndividual ,
+                       base:Professor ;
+              gvp:aat2332_affiliated_with odis:OR_35505 ;
+              rdfs:comment "Primary professor" ;
+              rdfs:label "Muel, Egidius" .
+
+
+###  http://www.odis.be/lnk/PS_88553
+odis:PS_88553 rdf:type owl:NamedIndividual ,
+                       base:Professor ;
+              rdfs:comment "Secondary professor" ,
+                           "priest" ;
+              rdfs:label "Werici, Deodatus" .
+
+
+###  http://www.odis.be/lnk/PS_88901
+odis:PS_88901 rdf:type owl:NamedIndividual ,
+                       base:Student ;
+              gvp:aat2332_affiliated_with odis:OR_35506 ;
+              madsrdf:birthPlace wd:Q743236 ;
+              rdfs:label "Van Aerschot, Michael"^^rdfs:Literal .
+
+
+###  http://www.odis.be/lnk/PS_94553
+odis:PS_94553 rdf:type owl:NamedIndividual ,
+                       base:Student ;
+              gvp:aat2332_affiliated_with odis:OR_35506 ;
+              madsrdf:birthPlace wd:Q12892 ;
+              rdfs:label "Ullens, Gaspar"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#BERNE_HEESWIJK
+base:BERNE_HEESWIJK rdf:type owl:NamedIndividual ,
+                             ecrm:E78_Collection ;
+                    rdfs:label "BERNE HEESWIJK" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Carolus_De_Goes
+base:Carolus_De_Goes rdf:type owl:NamedIndividual ,
+                              base:Student ;
+                     madsrdf:birthPlace wd:Q239 ;
+                     rdfs:label "De Goes, Carolus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Carolus_Rossi
+base:Carolus_Rossi rdf:type owl:NamedIndividual ,
+                            base:Student ;
+                   madsrdf:birthPlace wd:Q239 ;
+                   rdfs:label "Rossi, Carolus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Dialectica
+base:Dialectica rdf:type owl:NamedIndividual ,
+                         ecrm:E35_Title ;
+                rdfs:label "Dialectica" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Ethica
+base:Ethica rdf:type owl:NamedIndividual ,
+                     ecrm:E35_Title ;
+            rdfs:label "Ethica" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Ethica_et_metaphysica
+base:Ethica_et_metaphysica rdf:type owl:NamedIndividual ,
+                                    ecrm:E35_Title ;
+                           rdfs:label "Ethica et metaphysica" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Guillielmus_Bravert
+base:Guillielmus_Bravert rdf:type owl:NamedIndividual ,
+                                  base:Student ;
+                         madsrdf:birthPlace wd:Q727 ;
+                         rdfs:label "Bravert, Guillielmus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Imagined_Adapter
+base:Imagined_Adapter rdf:type owl:NamedIndividual ,
+                               base:Adapter .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Imagined_Artist
+base:Imagined_Artist rdf:type owl:NamedIndividual ,
+                              base:Artist .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Imagined_Novel_creation
+base:Imagined_Novel_creation rdf:type owl:NamedIndividual ,
+                                      efrbroo:F28_Expression_Creation ;
+                             ecrm:P14_carried_out_by base:Imagined_Adapter .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Imagined_Novel_of_Magister_Dixit_Manuscript_3
+base:Imagined_Novel_of_Magister_Dixit_Manuscript_3 rdf:type owl:NamedIndividual ,
+                                                            efrbroo:F2_Expression ;
+                                                   rdfs:comment "This is an imagined deriviated novel on magister dixit manuscript 3, to show the link between \"adaptor\" and the original manuscript." .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Imagined_Performance_creation
+base:Imagined_Performance_creation rdf:type owl:NamedIndividual ,
+                                            efrbroo:F28_Expression_Creation ;
+                                   ecrm:P14_carried_out_by base:Imagined_Artist .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Imagined_Performance_of_Magister_Dixit_Manuscript_3
+base:Imagined_Performance_of_Magister_Dixit_Manuscript_3 rdf:type owl:NamedIndividual ,
+                                                                  efrbroo:F2_Expression ;
+                                                         rdfs:comment "This is an imagined deriviated performance on magister dixit manuscript 3, to show the link between \"artist\" and the original manuscript." .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Leuven
+base:Leuven rdf:type owl:NamedIndividual ;
+            dcterms:identifier "https://vocab.getty.edu/tgn/7007949" ;
+            rdfs:label "Leuven" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Logica
+base:Logica rdf:type owl:NamedIndividual ,
+                     ecrm:E35_Title ;
+            dcterms:alternative "Dictata magis principalia in universam Logicam quæ sub Doctissimo Domino D Henrico Werpen STBF. Professore primario inflorentissimo Falconis pædagogio calamosuo excepit f[rater]. Augustinus Ketelers Eccl[esiae] Bernensis Canonicus Anno 1643" ;
+            rdfs:label "Logica" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_151
+base:Magister_Dixit_151 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q833670 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_151_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_151_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE4987988/representation" ;
+                        rdfs:label "Magister_Dixit_151" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_151_content
+base:Magister_Dixit_151_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Metaphysica._Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_151_creation
+base:Magister_Dixit_151_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35505 ,
+                                                         odis:PS_88551 ,
+                                                         odis:PS_88552 ,
+                                                         odis:PS_88553 ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_151_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_151_identifier
+base:Magister_Dixit_151_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9977549140101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9977549140101488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_151_time
+base:Magister_Dixit_151_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1686 ;
+                             base:Date_2 1687 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_152
+base:Magister_Dixit_152 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q833670 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_152_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_152_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE4996461/representation" ;
+                        rdfs:label "Magister_Dixit_152" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_152_content
+base:Magister_Dixit_152_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_152_creation
+base:Magister_Dixit_152_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35505 ,
+                                                         odis:PS_87910 ,
+                                                         odis:PS_87911 ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_152_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_152_identifier
+base:Magister_Dixit_152_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9977348420101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9977348420101488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_152_time
+base:Magister_Dixit_152_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1750 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_153
+base:Magister_Dixit_153 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q833670 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_153_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_153_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE4990089/representation" ;
+                        rdfs:label "Magister_Dixit_153" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_153_content
+base:Magister_Dixit_153_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_153_creation
+base:Magister_Dixit_153_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35505 ,
+                                                         odis:PS_88151 ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_153_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_153_identifier
+base:Magister_Dixit_153_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9977440210101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9977440210101488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_153_time
+base:Magister_Dixit_153_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1739 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3
+base:Magister_Dixit_3 rdf:type owl:NamedIndividual ,
+                               base:Magister_Dixit_Manuscript ;
+                      ecrm:P131_is_identified_by base:Magister_Dixit_3_identifier ;
+                      ecrm:P43_has_dimension base:Magister_Dixit_3_dimension ;
+                      ecrm:P45_consists_of base:paper ;
+                      ecrm:P52_has_current_owner base:BERNE_HEESWIJK ;
+                      ecrm:P56_bears_feature base:Magister_Dixit_3_physical_feature ;
+                      efrbroo:R18i_was_created_by base:Magister_Dixit_3_creation ;
+                      efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_3_content ;
+                      dcterms:identifier "http://resolver.libis.be/IE5062854/representation" ;
+                      skos:prefLabel "Abdij van Berne Heeswijk Ms. K1" ;
+                      rdfs:label "Magister_Dixit_3" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_351
+base:Magister_Dixit_351 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_351_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_351_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9503897/representation" ;
+                        rdfs:label "Magister_Dixit_351" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_351_content
+base:Magister_Dixit_351_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Logica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_351_creation
+base:Magister_Dixit_351_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35505 ,
+                                                         odis:PS_12258 ,
+                                                         odis:PS_27008 ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_351_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_351_identifier
+base:Magister_Dixit_351_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992258806901488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992258806901488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_351_time
+base:Magister_Dixit_351_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1781 ;
+                             base:Date_2 1782 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_Illustrations
+base:Magister_Dixit_3_Illustrations rdf:type owl:NamedIndividual ,
+                                             ecrm:E38_Image ;
+                                    ecrm:P3_has_note "f. 1/3r :$bengraved titlepage $cMetaphysica, Physica, with signs of the Lily, the Falcon, the Castle and the Pig ::: f. 1/30v : pasted on$bengraving(s) $cportrait of a lady ::: f. 1/121v : pasted on$bengraving(s) $cportrait of a veiled lady with book ::: f. 1/128r : pasted on$bengraving(s) $cMusica ::: f. 2/1r :$bengraved titlepage $cMetaphysica, Physica, with signs of the Lily, the Falcon, the Castle and the Pig ::: f. 2/1r : page with$bornamental initials" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_Scribes_notes
+base:Magister_Dixit_3_Scribes_notes rdf:type owl:NamedIndividual ,
+                                             base:Scribes_notes ;
+                                    ecrm:P3_has_note "Title created by cataloguer ::: 3 colophons ::: Colophon on f. 1/50r reads : Finis ::: Colophon on f. 1/157r reads : Finis coronato nobilitatur opus ::: Colophon on f. 2/142v reads : Finis ::: Chronogram on f. 1/157r reads : fIneM hVIVs LIbrI IVnII LVX nona VIDeba. [= 1643]" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_chapters
+base:Magister_Dixit_3_chapters rdf:type owl:NamedIndividual ,
+                                        efrbroo:F22_Self-Contained_Expression ;
+                               ecrm:P3_has_note "Dictata magis principalia in universam logicam $gf. 3r-157r ::: * [...] $gf. 5r-5v ::: * Tractatus de definitione et divisione $gf. 6r-10r ::: * Praefatio In Isafogen Porphirij $gf. 10r-43v ::: * Tractatus de distinctionibus $gf. 44r-50r ::: * Praefatio in libros praedicamentorum Aristotelis $gf. 50v-109r ::: * [Libri priorum analiticorum] $gf. 109r-157r ::: ** Liber primus primus priorum annaliticorum de obiecto horum librorum $gf. 109r-136r ::: ** Liber secundus priorum analiticorum $gf. 136r-157r ::: Dictata minus principalia in Logicam quae sub eruditissimo Domino D Francisco Van Viaene STLicentiato Philosophiæ Professore in celeberrimo coronati Falconis collegio scripsit F[rater]. Augustinus Ketelers msig. Eccl[esiae] Bern[ensis] Can[onicus] A°1643 $gf. 1r-142v ::: * Praefatio in Prodidagmata $gf. 1r-33v ::: * Praefatio in Libros perihermanias $gf. 34r-76r ::: ** Libri primi $gf. 37v-71r ::: ** Liber secundus perihermenias $gf. 71v-76r ::: * [Libri topicorum] ::: ** Liber primus topicorum $gf. 76r-94r ::: ** Liber secundum topicorum $gf. 94r-142v ::: Philosophia : logica, physica, metaphysia... / Praeside D. ac M. Evstachio de Froidmont [...]. Anno 1643. ... [Lovanii], typis Bernard. Masij [printed text] $gf. 145r" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_content
+base:Magister_Dixit_3_content rdf:type owl:NamedIndividual ,
+                                       efrbroo:F2_Expression ;
+                              ecrm:P102_has_title base:Logica ;
+                              ecrm:P72_has_language base:lat ;
+                              efrbroo:R5_has_component base:Magister_Dixit_3_chapters ;
+                              dcterms:hasVersion base:Imagined_Novel_of_Magister_Dixit_Manuscript_3 ,
+                                                 base:Imagined_Performance_of_Magister_Dixit_Manuscript_3 ;
+                              base:carries_illustrations base:Magister_Dixit_3_Illustrations ;
+                              base:carries_scribes_notes base:Magister_Dixit_3_Scribes_notes .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_contributors
+base:Magister_Dixit_3_contributors rdf:type owl:NamedIndividual ,
+                                            base:Contributors ;
+                                   ecrm:P3_has_note "Werpin, Henricus ::: Van Vianen, Franciscus ::: Ketelers, Augustinus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_country
+base:Magister_Dixit_3_country rdf:type owl:NamedIndividual ,
+                                       base:Country ;
+                              rdfs:label "xx" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_creation
+base:Magister_Dixit_3_creation rdf:type owl:NamedIndividual ,
+                                        efrbroo:F28_Expression_Creation ;
+                               ecrm:P14_carried_out_by odis:OR_35506 ,
+                                                       base:Magister_Dixit_3_contributors ;
+                               ecrm:P4_has_time-span base:Magister_Dixit_3_time ;
+                               ecrm:P7_took_place_at base:Magister_Dixit_3_country ,
+                                                     wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_dimension
+base:Magister_Dixit_3_dimension rdf:type owl:NamedIndividual ,
+                                         ecrm:E54_Dimension ;
+                                ecrm:P90_has_value "\\\\\\\\" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_identifier
+base:Magister_Dixit_3_identifier rdf:type owl:NamedIndividual ,
+                                          ecrm:E42_Identifier ;
+                                 dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9984817940101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                 rdfs:isDefinedBy 9984817940101488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_physical_feature
+base:Magister_Dixit_3_physical_feature rdf:type owl:NamedIndividual ,
+                                                ecrm:E26_Physical_Feature ;
+                                       base:has_binding "Brown calf leather binding ; blind stamped boards and spine with title \"Logica\" ;  stamp on front and back  board with sign of the Falcon and with the words \"Volitat svper omnia Falco\" ; renmants of leather ties and tieholes" ;
+                                       base:has_carrier "volume" ;
+                                       base:has_content "text" ;
+                                       base:has_folios "161, 145" ;
+                                       base:has_genre "Manuscripts ::: Lecture notes" ;
+                                       base:has_media "unmediated" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_3_time
+base:Magister_Dixit_3_time rdf:type owl:NamedIndividual ,
+                                    ecrm:E52_Time-Span ;
+                           ecrm:P3_has_note "s" ;
+                           base:Date_1 1643 ;
+                           base:Date_2 "\\\\\\\\" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_502
+base:Magister_Dixit_502 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_502_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_502_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9140046/representation" ;
+                        rdfs:label "Magister_Dixit_502" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_502_content
+base:Magister_Dixit_502_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Dialectica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_502_creation
+base:Magister_Dixit_502_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35513 ,
+                                                         base:Guillielmus_Bravert ,
+                                                         <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Van_Tieghem,_Petrus_Josephus> ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_502_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_502_identifier
+base:Magister_Dixit_502_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992241248401488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992241248401488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_502_time
+base:Magister_Dixit_502_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1711 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_503
+base:Magister_Dixit_503 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_503_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_503_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9140862/representation" ;
+                        rdfs:label "Magister_Dixit_503" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_503_content
+base:Magister_Dixit_503_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_503_creation
+base:Magister_Dixit_503_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35506 ,
+                                                         odis:PS_94553 ,
+                                                         base:PS_94563 ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_503_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_503_identifier
+base:Magister_Dixit_503_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992242003001488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992242003001488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_503_time
+base:Magister_Dixit_503_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1769 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_506
+base:Magister_Dixit_506 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_506_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_506_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9436368/representation" ;
+                        rdfs:label "Magister_Dixit_506" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_506_content
+base:Magister_Dixit_506_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Ethica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_506_creation
+base:Magister_Dixit_506_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35506 ,
+                                                         base:Petrus_Josephus_Bricoult ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_506_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_506_identifier
+base:Magister_Dixit_506_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992246369501488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992246369501488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_506_time
+base:Magister_Dixit_506_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1766 ;
+                             base:Date_2 1767 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_530
+base:Magister_Dixit_530 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_530_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_530_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9328831/representation" ;
+                        rdfs:label "Magister_Dixit_530" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_530_content
+base:Magister_Dixit_530_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_530_creation
+base:Magister_Dixit_530_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35506 ,
+                                                         odis:PS_88901 ,
+                                                         <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Petit,_Hermannus_Josephus> ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_530_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_530_identifier
+base:Magister_Dixit_530_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992251672801488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992251672801488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_530_time
+base:Magister_Dixit_530_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1762 ;
+                             base:Date_2 1763 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_532
+base:Magister_Dixit_532 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_532_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_532_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9332407/representation" ;
+                        rdfs:label "Magister_Dixit_532" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_532_content
+base:Magister_Dixit_532_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Ethica_et_metaphysica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_532_creation
+base:Magister_Dixit_532_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35503 ,
+                                                         base:Carolus_Rossi ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_532_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_532_identifier
+base:Magister_Dixit_532_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992252883301488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992252883301488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_532_time
+base:Magister_Dixit_532_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1768 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_533
+base:Magister_Dixit_533 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_533_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_533_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9444716/representation" ;
+                        rdfs:label "Magister_Dixit_533" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_533_content
+base:Magister_Dixit_533_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_533_creation
+base:Magister_Dixit_533_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35503 ,
+                                                         base:Carolus_Rossi ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_533_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_533_identifier
+base:Magister_Dixit_533_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992253783001488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992253783001488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_533_time
+base:Magister_Dixit_533_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1768 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_534
+base:Magister_Dixit_534 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_534_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_534_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9543803/representation" ;
+                        rdfs:label "Magister_Dixit_534" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_534_content
+base:Magister_Dixit_534_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_534_creation
+base:Magister_Dixit_534_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35503 ,
+                                                         odis:PS_29677 ,
+                                                         base:Carolus_Rossi ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_534_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_534_identifier
+base:Magister_Dixit_534_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992253682801488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992253682801488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_534_time
+base:Magister_Dixit_534_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1767 ;
+                             base:Date_2 1768 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_538
+base:Magister_Dixit_538 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_538_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_538_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9451380/representation" ;
+                        rdfs:label "Magister_Dixit_538" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_538_content
+base:Magister_Dixit_538_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_538_creation
+base:Magister_Dixit_538_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35503 ,
+                                                         base:Carolus_De_Goes ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_538_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_538_identifier
+base:Magister_Dixit_538_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992256608701488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992256608701488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_538_time
+base:Magister_Dixit_538_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1786 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_539
+base:Magister_Dixit_539 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_539_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_539_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9884923/representation" ;
+                        rdfs:label "Magister_Dixit_539" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_539_content
+base:Magister_Dixit_539_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_539_creation
+base:Magister_Dixit_539_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35503 ,
+                                                         base:Carolus_De_Goes ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_539_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_539_identifier
+base:Magister_Dixit_539_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992276681901488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992276681901488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_539_time
+base:Magister_Dixit_539_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1786 ;
+                             base:Date_2 1787 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_552
+base:Magister_Dixit_552 rdf:type owl:NamedIndividual ,
+                                 base:Magister_Dixit_Manuscript ;
+                        ecrm:P52_has_current_owner wd:Q383931 ;
+                        efrbroo:R18i_was_created_by base:Magister_Dixit_552_creation ;
+                        efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_552_content ;
+                        dcterms:identifier "http://resolver.libis.be/IE9898939/representation" ;
+                        rdfs:label "Magister_Dixit_552" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_552_content
+base:Magister_Dixit_552_content rdf:type owl:NamedIndividual ,
+                                         efrbroo:F2_Expression ;
+                                ecrm:P102_has_title base:Logica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_552_creation
+base:Magister_Dixit_552_creation rdf:type owl:NamedIndividual ,
+                                          efrbroo:F28_Expression_Creation ;
+                                 ecrm:P14_carried_out_by odis:OR_35503 ,
+                                                         base:Tilmannus_Schandelius ,
+                                                         <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Moituyer,_Matthaeus> ,
+                                                         <http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Tambuyser,_Servatius> ;
+                                 ecrm:P4_has_time-span base:Magister_Dixit_552_time ;
+                                 ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_552_identifier
+base:Magister_Dixit_552_identifier rdf:type owl:NamedIndividual ,
+                                            ecrm:E42_Identifier ;
+                                   dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9992282003601488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                   rdfs:label 9992282003601488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_552_time
+base:Magister_Dixit_552_time rdf:type owl:NamedIndividual ,
+                                      ecrm:E52_Time-Span ;
+                             base:Date_1 1632 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_6
+base:Magister_Dixit_6 rdf:type owl:NamedIndividual ,
+                               base:Magister_Dixit_Manuscript ;
+                      ecrm:P52_has_current_owner base:BERNE_HEESWIJK ;
+                      efrbroo:R18i_was_created_by base:Magister_Dixit_6_creation ;
+                      efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_6_content ;
+                      dcterms:identifier "http://resolver.libis.be/IE5064739/representation" ;
+                      rdfs:label "Magister_Dixit_6" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_6_content
+base:Magister_Dixit_6_content rdf:type owl:NamedIndividual ,
+                                       efrbroo:F2_Expression ;
+                              ecrm:P102_has_title base:Logica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_6_creation
+base:Magister_Dixit_6_creation rdf:type owl:NamedIndividual ,
+                                        efrbroo:F28_Expression_Creation ;
+                               ecrm:P14_carried_out_by odis:OR_35504 ,
+                                                       odis:PS_106008 ,
+                                                       odis:PS_106010 ,
+                                                       odis:PS_106011 ,
+                                                       odis:PS_106012 ,
+                                                       odis:PS_106013 ;
+                               ecrm:P4_has_time-span base:Magister_Dixit_6_time ;
+                               ecrm:P7_took_place_at base:Leuven .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_6_identifier
+base:Magister_Dixit_6_identifier rdf:type owl:NamedIndividual ,
+                                          ecrm:E42_Identifier ;
+                                 dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9984889740101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                 rdfs:label 9984889740101488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_6_time
+base:Magister_Dixit_6_time rdf:type owl:NamedIndividual ,
+                                    ecrm:E52_Time-Span ;
+                           base:Date_1 1666 ;
+                           base:Date_2 1667 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_7
+base:Magister_Dixit_7 rdf:type owl:NamedIndividual ,
+                               base:Magister_Dixit_Manuscript ;
+                      ecrm:P52_has_current_owner base:BERNE_HEESWIJK ;
+                      efrbroo:R18i_was_created_by base:Magister_Dixit_7_creation ;
+                      efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_7_content ;
+                      dcterms:identifier "http://resolver.libis.be/IE3580217/representation" ;
+                      rdfs:label "Magister_Dixit_7" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_7_content
+base:Magister_Dixit_7_content rdf:type owl:NamedIndividual ,
+                                       efrbroo:F2_Expression ;
+                              ecrm:P102_has_title base:Physica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_7_creation
+base:Magister_Dixit_7_creation rdf:type owl:NamedIndividual ,
+                                        efrbroo:F28_Expression_Creation ;
+                               ecrm:P14_carried_out_by odis:OR_35503 ,
+                                                       odis:PS_105992 ,
+                                                       odis:PS_105993 ;
+                               ecrm:P4_has_time-span base:Magister_Dixit_7_time ;
+                               ecrm:P7_took_place_at odis:OR_35503 ,
+                                                     base:Leuven .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_7_identifier
+base:Magister_Dixit_7_identifier rdf:type owl:NamedIndividual ,
+                                          ecrm:E42_Identifier ;
+                                 dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9984813000101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                 rdfs:label 9984813000101488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_7_time
+base:Magister_Dixit_7_time rdf:type owl:NamedIndividual ,
+                                    ecrm:E52_Time-Span ;
+                           base:Date_1 1669 ;
+                           base:Date_2 1670 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_9
+base:Magister_Dixit_9 rdf:type owl:NamedIndividual ,
+                               base:Magister_Dixit_Manuscript ;
+                      ecrm:P52_has_current_owner base:BERNE_HEESWIJK ;
+                      efrbroo:R18i_was_created_by base:Magister_Dixit_9_creation ;
+                      efrbroo:R42_is_representative_manifestation_singleton_for base:Magister_Dixit_9_content ;
+                      dcterms:identifier "http://resolver.libis.be/IE5048421/representation" ;
+                      rdfs:label "Magister_Dixit_9" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_9_content
+base:Magister_Dixit_9_content rdf:type owl:NamedIndividual ,
+                                       efrbroo:F2_Expression ;
+                              ecrm:P102_has_title base:Logica .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_9_creation
+base:Magister_Dixit_9_creation rdf:type owl:NamedIndividual ,
+                                        efrbroo:F28_Expression_Creation ;
+                               ecrm:P14_carried_out_by odis:OR_35504 ,
+                                                       odis:PS_106004 ;
+                               ecrm:P4_has_time-span base:Magister_Dixit_9_time ;
+                               ecrm:P7_took_place_at wd:Q118958 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_9_identifier
+base:Magister_Dixit_9_identifier rdf:type owl:NamedIndividual ,
+                                          ecrm:E42_Identifier ;
+                                 dcterms:identifier "https://limo.libis.be/primo-explore/search?query=any,contains,9984915010101488&tab=all_content_tab&search_scope=ALL_CONTENT&vid=KULeuven" ;
+                                 rdfs:label 9984915010101488 .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Magister_Dixit_9_time
+base:Magister_Dixit_9_time rdf:type owl:NamedIndividual ,
+                                    ecrm:E52_Time-Span .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Metaphysica._Physica
+base:Metaphysica._Physica rdf:type owl:NamedIndividual ,
+                                   ecrm:E35_Title ;
+                          rdfs:label "Metaphysica. Physica" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#PS_94563
+base:PS_94563 rdf:type owl:NamedIndividual ,
+                       base:Professor ;
+              gvp:aat2332_affiliated_with odis:OR_35506 ;
+              rdfs:comment "Secondary professor" ;
+              rdfs:label "Heijlen, Petrus Josephus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Petrus_Josephus_Bricoult
+base:Petrus_Josephus_Bricoult rdf:type owl:NamedIndividual ,
+                                       base:Student ;
+                              madsrdf:birthPlace wd:Q2698470 ;
+                              rdfs:label "Bricoult, Petrus Josephus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Physica
+base:Physica rdf:type owl:NamedIndividual ,
+                      ecrm:E35_Title ;
+             ecrm:P102_has_title base:Physica ;
+             rdfs:label "Physica" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Tilmannus_Schandelius
+base:Tilmannus_Schandelius rdf:type owl:NamedIndividual ,
+                                    base:Student ;
+                           madsrdf:birthPlace wd:Q58780 ;
+                           rdfs:label "Schandelius, Tilmannus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#lat
+base:lat rdf:type owl:NamedIndividual ,
+                  ecrm:E56_Language ;
+         rdfs:label "lat" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#paper
+base:paper rdf:type owl:NamedIndividual ,
+                    ecrm:E57_Material ;
+           rdfs:label "paper" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Moituyer,_Matthaeus
+<http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Moituyer,_Matthaeus> rdf:type owl:NamedIndividual ,
+                                                                                            base:Professor ;
+                                                                                   rdfs:comment "Primary professor" ;
+                                                                                   rdfs:label "Moituyer, Matthaeus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Petit,_Hermannus_Josephus
+<http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Petit,_Hermannus_Josephus> rdf:type owl:NamedIndividual ,
+                                                                                                  base:Professor ;
+                                                                                         rdfs:comment "Primary professor" ;
+                                                                                         rdfs:label "Petit, Hermannus Josephus" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Tambuyser,_Servatius
+<http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Tambuyser,_Servatius> rdf:type owl:NamedIndividual ,
+                                                                                             base:Professor ;
+                                                                                    rdfs:comment "Secondary professor" ;
+                                                                                    rdfs:label "Tambuyser, Servatius" .
+
+
+###  http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Van_Tieghem,_Petrus_Josephus
+<http://www.semanticweb.org/Vourtsi_Zhuang_Oltean_common_core#Van_Tieghem,_Petrus_Josephus> rdf:type owl:NamedIndividual ,
+                                                                                                     base:Professor ;
+                                                                                            rdfs:label "Van Tieghem, Petrus Josephus" .
+
+
+###  http://www.wikidata.org/entity/Q118958
+wd:Q118958 rdf:type owl:NamedIndividual ,
+                    base:City ;
+           rdfs:comment "capital city of Flemish Brabant, Belgium" ;
+           rdfs:label "Leuven" .
+
+
+###  http://www.wikidata.org/entity/Q12892
+wd:Q12892 rdf:type owl:NamedIndividual ,
+                   base:City ;
+          rdfs:comment "municipality in the province of Antwerp, Belgium" ;
+          rdfs:label "Antwerp" .
+
+
+###  http://www.wikidata.org/entity/Q1296
+wd:Q1296 rdf:type owl:NamedIndividual ,
+                  base:City ;
+         rdfs:comment "city in the province of East Flanders, Belgium" ;
+         rdfs:label "Ghent" .
+
+
+###  http://www.wikidata.org/entity/Q2116328
+wd:Q2116328 rdf:type owl:NamedIndividual ,
+                     base:City ;
+            rdfs:comment "section of Écaussinnes, Belgium" ;
+            rdfs:label "Marche-lez-Écaussinnes" .
+
+
+###  http://www.wikidata.org/entity/Q239
+wd:Q239 rdf:type owl:NamedIndividual ,
+                 base:City ;
+        rdfs:comment "municipality and capital city of Belgium" ;
+        rdfs:label "Brussels" .
+
+
+###  http://www.wikidata.org/entity/Q26793
+wd:Q26793 rdf:type owl:NamedIndividual ,
+                   base:City ;
+          rdfs:comment "Norwegian city in Vestland, Norway" ;
+          rdfs:label "Bergen" .
+
+
+###  http://www.wikidata.org/entity/Q2698470
+wd:Q2698470 rdf:type owl:NamedIndividual ,
+                     base:City ;
+            rdfs:comment "Bassilly, section of Silly, Belgium" ;
+            rdfs:label "Zullik"@nl .
+
+
+###  http://www.wikidata.org/entity/Q2766547
+wd:Q2766547 rdf:type owl:NamedIndividual ,
+                     base:City ;
+            rdfs:comment "capital city of North Brabant, the Netherlands" ;
+            rdfs:label "'s-Hertogenbosch" .
+
+
+###  http://www.wikidata.org/entity/Q383931
+wd:Q383931 rdf:type owl:NamedIndividual ,
+                    ecrm:E78_Collection ;
+           rdfs:comment "National Library of Belgium" ;
+           rdfs:label "KBR" .
+
+
+###  http://www.wikidata.org/entity/Q58780
+wd:Q58780 rdf:type owl:NamedIndividual ,
+                   base:City ;
+          rdfs:comment "municipality in Limburg, Belgium" ;
+          rdfs:label "Hasselt" .
+
+
+###  http://www.wikidata.org/entity/Q727
+wd:Q727 rdf:type owl:NamedIndividual ,
+                 base:City ;
+        rdfs:comment "capital and most populous city of the Netherlands" ;
+        rdfs:label "Amsterdam" .
+
+
+###  http://www.wikidata.org/entity/Q743236
+wd:Q743236 rdf:type owl:NamedIndividual ,
+                    base:City ;
+           rdfs:comment "municipality in Flemish Brabant, Belgium"^^rdfs:Literal ;
+           rdfs:label "Diest" .
+
+
+###  http://www.wikidata.org/entity/Q833670
+wd:Q833670 rdf:type owl:NamedIndividual ,
+                    ecrm:E78_Collection ;
+           rdfs:comment "Katholieke Universiteit Leuven" ;
+           rdfs:label "KULEUVEN" .
+
+
+###  http://www.wikidata.org/entity/Q9839
+wd:Q9839 rdf:type owl:NamedIndividual ,
+                  base:City ;
+         rdfs:comment "former municipality in the Netherlands" ;
+         rdfs:label "Grave" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
